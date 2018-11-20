@@ -11,7 +11,7 @@ export const emptyChord = { notes: [{}, {}, {}, {}, {}, {}] };
 //   end: null
 // };
 
-export const initialMeasure = {
+export const initialSection = {
   name: '',
   tunings: ['E', 'B', 'G', 'D', 'A', 'E'],
   chords: [
@@ -26,6 +26,8 @@ export const initialMeasure = {
   ]
 };
 
+export const initialTuning = 'E';
+
 export const initialState = {
   chordHovered: false,
   // clipboard: {
@@ -38,6 +40,6 @@ export const initialState = {
   //   },
   //   chord: { measureId: 0, chordId: 0 }
   // },
-  measures: [initialMeasure],
+  sections: [initialSection],
   sheetName: ''
 };
