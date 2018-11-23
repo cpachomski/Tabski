@@ -1,5 +1,5 @@
 export const dummyChord = {
-  notes: [{ finger: 1 }, { finger: 2 }, {}, {}, {}, {}]
+  notes: [{ fret: 1 }, { fret: 2 }, {}, {}, {}, {}]
 };
 
 export const emptyChord = { notes: [{}, {}, {}, {}, {}, {}] };
