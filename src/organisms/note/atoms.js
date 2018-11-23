@@ -1,0 +1,43 @@
+import styled from 'styled-components';
+
+export const Square = styled.div`
+  height: 40px;
+  width: 40px;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+`;
+
+export const Line = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  height: ${props => (props.isHovered ? `6px` : `2px`)};
+  width: 100%;
+  background-color: black;
+  transform: translateY(-50%);
+`;
+
+export const Dot = styled.div`
+  position: absolute;
+  z-index: 10;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 26px;
+  border-radius: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: black;
+`;
