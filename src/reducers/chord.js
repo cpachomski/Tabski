@@ -1,5 +1,5 @@
 import update from 'immutability-helper';
-import { ADD_CHORD, REMOVE_CHORD } from 'actions/chord';
+import { ADD_CHORD, REMOVE_CHORD } from 'actions';
 
 export default {
   [ADD_CHORD]: (state, action) => {
@@ -25,5 +25,5 @@ export default {
       }
     });
   },
-  undoable: [ADD_CHORD, REMOVE_CHORD]
+  undoableActions: [ADD_CHORD, REMOVE_CHORD]
 };

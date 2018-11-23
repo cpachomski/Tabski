@@ -1,16 +1,18 @@
 import update from 'immutability-helper';
-import { initialSection, initialTuning } from 'store/defaults';
+import { initialSection, initialTuning } from 'store/initial-state';
 import {
   ADD_SECTION,
   REMOVE_SECTION,
   SET_SECTION_TITLE,
+  SET_SECTION_TUNING,
   ADD_SECTION_STRING,
   REMOVE_SECTION_STRING
 } from 'actions';
 
 export default {
-  [ADD_SECTION]: state =>
-    update(state, { sections: { $push: [initialSection] } }),
+  [ADD_SECTION]: state => {
+    return update(state, { sections: { $push: [initialSection] } });
+  },
   [REMOVE_SECTION]: (state, action) => {
     const sectionId = action.sectionId || state.sections.length - 1;
 
@@ -18,10 +20,26 @@ export default {
       sections: { $splice: [[sectionId, 1]] }
     });
   },
-  [SET_SECTION_TITLE]: (state, action) =>
-    update(state, {
-      sections: { [action.sectionId]: { $merge: { name: action.name } } }
-    }),
+  [SET_SECTION_TITLE]: (state, action) => {
+    const { sectionId, name } = action;
+
+    return update(state, {
+      sections: { [sectionId]: { $merge: { name } } }
+    });
+  },
+  [SET_SECTION_TUNING]: (state, action) => {
+    const { sectionId, tuningId, tuning } = action;
+
+    return update(state, {
+      sections: {
+        [sectionId]: {
+          tunings: {
+            [tuningId]: { $set: tuning }
+          }
+        }
+      }
+    });
+  },
   [ADD_SECTION_STRING]: (state, action) => {
     const { chords } = state.sections[action.sectionId];
     const newChords = chords.map(chord => ({ notes: chord.notes.concat({}) }));
@@ -46,9 +64,10 @@ export default {
       }
     });
   },
-  undoable: [
+  undoableActions: [
     ADD_SECTION,
     REMOVE_SECTION,
+    SET_SECTION_TUNING,
     ADD_SECTION_STRING,
     REMOVE_SECTION_STRING
   ]
