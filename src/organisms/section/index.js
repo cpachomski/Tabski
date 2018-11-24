@@ -1,19 +1,22 @@
 import React, { Component, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 
 import Chord from 'organisms/chord';
-
-const SectionName = styled.input``;
-const SectionControls = styled.div``;
+import { SectionName, SectionControls } from './atoms';
 
 const SectionChords = memo(({ sectionId, chords, tunings }) => (
   <>
     {chords &&
       chords.length > 0 &&
       chords.map((chord, i) => (
-        <Chord sectionId={sectionId} chordId={i} tunings={tunings} {...chord} />
+        <Chord
+          key={`s:${sectionId}-c:${i}`}
+          sectionId={sectionId}
+          chordId={i}
+          tunings={tunings}
+          {...chord}
+        />
       ))}
   </>
 ));
@@ -31,7 +34,7 @@ class Section extends Component {
 
     return (
       <>
-        <SectionName value={sectionName} />
+        <SectionName value={sectionName} placeholder="Section Name" />
         <SectionChords
           sectionId={sectionId}
           chords={chords}
