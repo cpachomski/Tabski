@@ -12,7 +12,7 @@ export const emptyChord = { notes: [{}, {}, {}, {}, {}, {}] };
 // };
 
 export const initialSection = {
-  name: '',
+  sectionName: '',
   tunings: ['E', 'B', 'G', 'D', 'A', 'E'],
   chords: [
     emptyChord,
@@ -41,5 +41,5 @@ export const initialState = {
   //   chord: { measureId: 0, chordId: 0 }
   // },
   sections: [initialSection],
-  sheetName: ''
+  sheetName: 'sup'
 };
