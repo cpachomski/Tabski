@@ -1,21 +1,9 @@
 import React, { Component, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 
 import Note from 'organisms/note';
-
-const Row = styled.div`
-  display: flex;
-`;
-
-const Column = styled.div`
-  padding: 10px 0px;
-
-  &:hover {
-    background-color: #efefef;
-  }
-`;
+import { Column, Row } from './atoms';
 
 const ChordNotes = memo(({ chordId, sectionId, notes }) => (
   <Column>

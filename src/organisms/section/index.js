@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { SET_SECTION_NAME } from 'actions';
 
 import Chord from 'organisms/chord';
-import { SectionName, SectionControls } from './atoms';
+import { Row, SectionName, SectionControls } from './atoms';
 
 const SectionChords = memo(({ sectionId, chords, tunings }) => (
-  <>
+  <Row>
     {chords &&
       chords.length > 0 &&
       chords.map((chord, i) => (
@@ -20,7 +20,7 @@ const SectionChords = memo(({ sectionId, chords, tunings }) => (
           {...chord}
         />
       ))}
-  </>
+  </Row>
 ));
 
 class Section extends Component {
