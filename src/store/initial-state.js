@@ -41,5 +41,5 @@ export const initialState = {
   //   chord: { measureId: 0, chordId: 0 }
   // },
   sections: [initialSection],
-  sheetName: 'sup'
+  sheetName: ''
 };
