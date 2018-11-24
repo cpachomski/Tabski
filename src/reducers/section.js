@@ -3,7 +3,7 @@ import { initialSection, initialTuning } from 'store/initial-state';
 import {
   ADD_SECTION,
   REMOVE_SECTION,
-  SET_SECTION_TITLE,
+  SET_SECTION_NAME,
   SET_SECTION_TUNING,
   ADD_SECTION_STRING,
   REMOVE_SECTION_STRING
@@ -20,11 +20,11 @@ export default {
       sections: { $splice: [[sectionId, 1]] }
     });
   },
-  [SET_SECTION_TITLE]: (state, action) => {
-    const { sectionId, name } = action;
+  [SET_SECTION_NAME]: (state, action) => {
+    const { sectionId, sectionName } = action;
 
     return update(state, {
-      sections: { [sectionId]: { $merge: { name } } }
+      sections: { [sectionId]: { $merge: { sectionName } } }
     });
   },
   [SET_SECTION_TUNING]: (state, action) => {

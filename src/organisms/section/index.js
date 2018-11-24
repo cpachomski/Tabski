@@ -2,6 +2,8 @@ import React, { Component, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { SET_SECTION_NAME } from 'actions';
+
 import Chord from 'organisms/chord';
 import { SectionName, SectionControls } from './atoms';
 
@@ -30,11 +32,21 @@ class Section extends Component {
   };
 
   render() {
-    const { sectionId, chords, tunings, sectionName } = this.props;
+    const { sectionId, chords, tunings, sectionName, dispatch } = this.props;
 
     return (
       <>
-        <SectionName value={sectionName} placeholder="Section Name" />
+        <SectionName
+          value={sectionName}
+          placeholder="Section Name"
+          onChange={e =>
+            dispatch({
+              type: SET_SECTION_NAME,
+              sectionId,
+              sectionName: e.target.value
+            })
+          }
+        />
         <SectionChords
           sectionId={sectionId}
           chords={chords}
