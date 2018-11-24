@@ -10,7 +10,7 @@ class Note extends Component {
   };
 
   state = {
-    notePickerVisible: false,
+    notePickerIsVisible: false,
     isHovered: false
   };
 
