@@ -35,6 +35,6 @@ class Sheet extends Component {
   }
 }
 
-export default connect(({ present: { measures } }) => ({
-  measures
+export default connect(({ present: { sections } }) => ({
+  sections
 }))(Sheet);

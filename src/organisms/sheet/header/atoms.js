@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 export const Input = styled.input`
-  width: 100%;
-  font-size: 50px;
   border: 1px solid transparent;
+  box-sizing: border-box;
+  font-size: 50px;
+  margin-bottom: 10px;
   outline: none;
+  padding: 10px;
+  width: 100%;
 
   &:hover,
   &:active {
