@@ -45,6 +45,7 @@
     "react-app-polyfill": "^0.1.3",
     "react-dev-utils": "^6.1.1",
     "react-dom": "^16.6.3",
+    "react-pie-menu": "^0.2.4",
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
