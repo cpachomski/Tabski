@@ -10,7 +10,7 @@ export const Input = styled.input`
   width: 100%;
 
   &:hover,
-  &:active {
+  &:focus {
     border-color: black;
   }
 `;
