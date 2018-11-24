@@ -5,9 +5,16 @@ import styled from 'styled-components';
 
 import Note from 'organisms/note';
 
-const Column = styled.div``;
 const Row = styled.div`
   display: flex;
+`;
+
+const Column = styled.div`
+  padding: 10px 0px;
+
+  &:hover {
+    background-color: #efefef;
+  }
 `;
 
 const ChordNotes = memo(({ chordId, sectionId, notes }) => (
@@ -15,7 +22,13 @@ const ChordNotes = memo(({ chordId, sectionId, notes }) => (
     {notes &&
       notes.length > 0 &&
       notes.map((note, i) => (
-        <Note chordId={chordId} sectionId={sectionId} noteId={i} {...note} />
+        <Note
+          key={`s:${sectionId}-c:${chordId}-n:${i}`}
+          chordId={chordId}
+          sectionId={sectionId}
+          noteId={i}
+          {...note}
+        />
       ))}
   </Column>
 ));
