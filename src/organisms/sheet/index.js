@@ -11,7 +11,9 @@ const SheetSections = memo(({ sections }) => (
   <>
     {sections &&
       sections.length > 0 &&
-      sections.map((section, i) => <Section sectionId={i} {...section} />)}
+      sections.map((section, i) => (
+        <Section key={`s:${i}`} sectionId={i} {...section} />
+      ))}
   </>
 ));
 
