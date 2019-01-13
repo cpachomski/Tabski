@@ -1,4 +1,5 @@
 export const SET_NOTE = "SET_NOTE";
+export const SET_ACTIVE_NOTE_SELECTOR = "SET_ACTIVE_NOTE_SELECTOR";
 
 export const ADD_CHORD = "ADD_CHORD";
 export const REMOVE_CHORD = "REMOVE_CHORD";
