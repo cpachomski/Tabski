@@ -1,39 +1,100 @@
-import React, { Component } from "react";
+import React, { memo, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { SET_ACTIVE_NOTE_SELECTOR } from "actions";
 
 import NoteSelector from "../note-selector";
 import { Square, Line, Dot } from "./atoms";
 
-class Note extends Component {
-  static propTypes = {
-    fret: PropTypes.number
-  };
-
-  state = {
-    isSelectorVisible: false,
-    isHovered: false
-  };
-
-  render() {
-    const { fret } = this.props;
-    const { isHovered, isSelectorVisible } = this.state;
-
-    return (
-      <Square
-        onMouseEnter={() =>
-          this.setState({
-            isHovered: true
-          })
-        }
-        onMouseLeave={() => this.setState({ isHovered: false })}
-      >
-        <Line isHovered={isHovered} />
-        {fret && <Dot>{fret}</Dot>}
-        {isSelectorVisible && <NoteSelector />}
-      </Square>
-    );
+function isActiveNoteSelector(activeNoteSelector, sectionId, chordId, noteId) {
+  if (!activeNoteSelector) {
+    return false;
   }
+
+  return (
+    activeNoteSelector.sectionId === sectionId &&
+    activeNoteSelector.chordId === chordId &&
+    activeNoteSelector.noteId === noteId
+  );
 }
 
-export default connect()(Note);
+function areEqual(prevProps, nextProps) {
+  return (
+    isActiveNoteSelector(
+      prevProps.activeNoteSelector,
+      prevProps.sectionId,
+      prevProps.chordId,
+      prevProps.noteId
+    ) ===
+      isActiveNoteSelector(
+        nextProps.activeNoteSelector,
+        nextProps.sectionId,
+        nextProps.chordId,
+        nextProps.noteId
+      ) && prevProps.fret === nextProps.fret
+  );
+}
+
+const Note = memo(function Note({
+  activeNoteSelector,
+  sectionId,
+  chordId,
+  noteId,
+  fret,
+  dispatch
+}) {
+  console.log("re-render");
+  const [state, setState] = useState({
+    isHovered: false
+  });
+
+  return (
+    <Square
+      onClick={() =>
+        dispatch({
+          type: SET_ACTIVE_NOTE_SELECTOR,
+          sectionId,
+          chordId,
+          noteId
+        })
+      }
+      onMouseEnter={() =>
+        setState({
+          ...state,
+          isHovered: true
+        })
+      }
+      onMouseLeave={() => setState({ ...state, isHovered: false })}
+    >
+      <Line isHovered={state.isHovered} />
+      {fret && <Dot>{fret}</Dot>}
+      {activeNoteSelector &&
+        isActiveNoteSelector(
+          activeNoteSelector,
+          sectionId,
+          chordId,
+          noteId
+        ) && (
+          <NoteSelector
+            sectionId={sectionId}
+            chordId={chordId}
+            noteId={noteId}
+          />
+        )}
+    </Square>
+  );
+},
+areEqual);
+
+Note.propTypes = {
+  sectionId: PropTypes.number,
+  chordId: PropTypes.number,
+  noteId: PropTypes.number,
+  fret: PropTypes.number
+};
+
+const mapStateToProps = state => ({
+  activeNoteSelector: state.present.activeNoteSelector
+});
+
+export default connect(mapStateToProps)(Note);
