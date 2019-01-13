@@ -43,7 +43,6 @@ const Note = memo(function Note({
   fret,
   dispatch
 }) {
-  console.log("re-render");
   const [state, setState] = useState({
     isHovered: false
   });
