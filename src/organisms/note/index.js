@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import { Square, Line, Dot } from './atoms';
+import NoteSelector from "../note-selector";
+import { Square, Line, Dot } from "./atoms";
 
 class Note extends Component {
   static propTypes = {
@@ -10,13 +11,13 @@ class Note extends Component {
   };
 
   state = {
-    notePickerIsVisible: false,
+    isSelectorVisible: false,
     isHovered: false
   };
 
   render() {
     const { fret } = this.props;
-    const { isHovered } = this.state;
+    const { isHovered, isSelectorVisible } = this.state;
 
     return (
       <Square
@@ -25,9 +26,11 @@ class Note extends Component {
             isHovered: true
           })
         }
-        onMouseLeave={() => this.setState({ isHovered: false })}>
+        onMouseLeave={() => this.setState({ isHovered: false })}
+      >
         <Line isHovered={isHovered} />
         {fret && <Dot>{fret}</Dot>}
+        {isSelectorVisible && <NoteSelector />}
       </Square>
     );
   }

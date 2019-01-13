@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
-import { connect } from 'react-redux';
+import React, { memo } from "react";
+import { connect } from "react-redux";
 
-import { SET_SHEET_NAME } from 'actions';
+import { SET_SHEET_NAME } from "actions";
 
-import { Input } from './atoms';
+import { Input } from "./atoms";
 
 const SheetHeader = memo(({ dispatch, sheetName }) => (
   <Input

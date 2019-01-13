@@ -1,5 +1,5 @@
-import update from 'immutability-helper';
-import { initialSection, initialTuning } from 'store/initial-state';
+import update from "immutability-helper";
+import { initialSection, initialTuning } from "store/initial-state";
 import {
   ADD_SECTION,
   REMOVE_SECTION,
@@ -7,7 +7,7 @@ import {
   SET_SECTION_TUNING,
   ADD_SECTION_STRING,
   REMOVE_SECTION_STRING
-} from 'actions';
+} from "actions";
 
 export default {
   [ADD_SECTION]: state => {

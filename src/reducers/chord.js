@@ -1,5 +1,5 @@
-import update from 'immutability-helper';
-import { ADD_CHORD, REMOVE_CHORD } from 'actions';
+import update from "immutability-helper";
+import { ADD_CHORD, REMOVE_CHORD } from "actions";
 
 export default {
   [ADD_CHORD]: (state, action) => {

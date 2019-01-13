@@ -1,9 +1,9 @@
-import React, { Component, memo } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component, memo } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import Note from 'organisms/note';
-import { Column, Row } from './atoms';
+import Note from "organisms/note";
+import { Column, Row } from "./atoms";
 
 const ChordNotes = memo(({ chordId, sectionId, notes }) => (
   <Column>

@@ -1,10 +1,10 @@
-import undoable, { includeAction } from 'redux-undo';
-import { initialState } from 'store/initial-state';
+import undoable, { includeAction } from "redux-undo";
+import { initialState } from "store/initial-state";
 
 const { reducers, undoableActions } = [
-  require('./chord').default,
-  require('./section').default,
-  require('./sheet').default
+  require("./chord").default,
+  require("./section").default,
+  require("./sheet").default
 ].reduce(
   (a, c) => ({
     reducers: { ...a.reducers, ...c },

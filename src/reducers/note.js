@@ -1,5 +1,5 @@
-import update from 'immutability-helper';
-import { SET_NOTE } from 'actions';
+import update from "immutability-helper";
+import { SET_NOTE } from "actions";
 
 export default {
   [SET_NOTE]: (state, action) => {

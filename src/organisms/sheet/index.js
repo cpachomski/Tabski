@@ -1,11 +1,11 @@
-import React, { Component, memo } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component, memo } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import { XContainer } from 'design/structure';
-import SheetHeader from 'organisms/sheet/header';
-import Section from 'organisms/section';
-import { Box } from './atoms';
+import { XContainer } from "design/structure";
+import SheetHeader from "organisms/sheet/header";
+import Section from "organisms/section";
+import { Box } from "./atoms";
 
 const SheetSections = memo(({ sections }) => (
   <>

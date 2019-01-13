@@ -1,5 +1,5 @@
-import update from 'immutability-helper';
-import { SET_SHEET_NAME, SET_SHEET_STATE } from 'actions';
+import update from "immutability-helper";
+import { SET_SHEET_NAME, SET_SHEET_STATE } from "actions";
 
 export default {
   [SET_SHEET_NAME]: (state, action) => {

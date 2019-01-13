@@ -1,11 +1,11 @@
-import React, { Component, memo } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component, memo } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import { SET_SECTION_NAME } from 'actions';
+import { SET_SECTION_NAME } from "actions";
 
-import Chord from 'organisms/chord';
-import { Row, SectionName, SectionControls } from './atoms';
+import Chord from "organisms/chord";
+import { Row, SectionName, SectionControls } from "./atoms";
 
 const SectionChords = memo(({ sectionId, chords, tunings }) => (
   <Row>
