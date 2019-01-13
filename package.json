@@ -47,6 +47,7 @@
     "react-dom": "^16.6.3",
     "react-pie-menu": "^0.2.4",
     "react-redux": "^5.1.1",
+    "react-spring": "^7.2.8",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-undo": "beta",
