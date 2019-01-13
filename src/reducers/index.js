@@ -4,7 +4,8 @@ import { initialState } from "store/initial-state";
 const { reducers, undoableActions } = [
   require("./chord").default,
   require("./section").default,
-  require("./sheet").default
+  require("./sheet").default,
+  require("./note").default
 ].reduce(
   (a, c) => ({
     reducers: { ...a.reducers, ...c },
