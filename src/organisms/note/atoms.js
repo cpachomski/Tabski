@@ -41,14 +41,15 @@ export const Line = styled.span`
 export const Dot = styled.div`
   position: absolute;
   z-index: 10;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   text-align: center;
-  line-height: 26px;
+  line-height: 31px;
   border-radius: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  font-weight: bold;
   background-color: black;
 `;

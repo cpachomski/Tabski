@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { SET_NOTE, SET_ACTIVE_NOTE_SELECTOR } from "actions";
+import { SET_NOTE, SET_ACTIVE_NOTE_SELECTOR, SET_RECENT_NOTE } from "actions";
 import { Wrapper, OptionsGrid, Heading, Selection } from "./atoms";
-import { frets } from "./config";
+import { notes } from "./config";
 
-function SingleFretSelections({
+function SingleNoteSelections({
   heading,
-  frets,
+  notes,
   sectionId,
   chordId,
   noteId,
@@ -17,15 +17,16 @@ function SingleFretSelections({
     <>
       {heading && <Heading>{heading}</Heading>}
       <OptionsGrid>
-        {frets.map((fret, i) => (
+        {notes.map((note, i) => (
           <Selection
             onClick={() => {
-              dispatch({ type: SET_NOTE, sectionId, chordId, noteId, fret });
+              dispatch({ type: SET_NOTE, sectionId, chordId, noteId, note });
               dispatch({ type: SET_ACTIVE_NOTE_SELECTOR });
+              dispatch({ type: SET_RECENT_NOTE, note });
             }}
-            key={`s:${sectionId}-c:${chordId}-n:${noteId}-f:${fret}`}
+            key={`h:${heading}-s:${sectionId}-c:${chordId}-n:${noteId}-f:${note}-i:${i}`}
           >
-            {fret}
+            {note}
           </Selection>
         ))}
       </OptionsGrid>
@@ -33,7 +34,7 @@ function SingleFretSelections({
   );
 }
 
-function NoteSelector({ sectionId, chordId, noteId, dispatch }) {
+function NoteSelector({ sectionId, chordId, noteId, recentNotes, dispatch }) {
   const selectorRef = React.createRef();
 
   function handleClick(event) {
@@ -51,9 +52,17 @@ function NoteSelector({ sectionId, chordId, noteId, dispatch }) {
 
   return (
     <Wrapper ref={selectorRef}>
-      <SingleFretSelections
+      <SingleNoteSelections
         heading="Single Notes"
-        frets={frets}
+        notes={notes}
+        sectionId={sectionId}
+        chordId={chordId}
+        noteId={noteId}
+        dispatch={dispatch}
+      />
+      <SingleNoteSelections
+        heading="Recent Notes"
+        notes={recentNotes}
         sectionId={sectionId}
         chordId={chordId}
         noteId={noteId}
@@ -69,4 +78,6 @@ NoteSelector.propTypes = {
   noteId: PropTypes.number
 };
 
-export default connect()(NoteSelector);
+const mapStateToProps = state => ({ recentNotes: state.present.recentNotes });
+
+export default connect(mapStateToProps)(NoteSelector);

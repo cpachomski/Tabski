@@ -31,12 +31,12 @@ function areEqual(prevProps, nextProps) {
         nextProps.sectionId,
         nextProps.chordId,
         nextProps.noteId
-      ) && prevProps.fret === nextProps.fret
+      ) && prevProps.note === nextProps.note
   );
 }
 
 const Note = memo(
-  ({ activeNoteSelector, sectionId, chordId, noteId, fret, dispatch }) => {
+  ({ activeNoteSelector, sectionId, chordId, noteId, note, dispatch }) => {
     return (
       <Square
         onMouseDown={() =>
@@ -49,7 +49,7 @@ const Note = memo(
         }
       >
         <Line />
-        {fret && <Dot>{fret}</Dot>}
+        {note && <Dot>{note}</Dot>}
         {activeNoteSelector &&
           isActiveNoteSelector(
             activeNoteSelector,
@@ -73,7 +73,7 @@ Note.propTypes = {
   sectionId: PropTypes.number,
   chordId: PropTypes.number,
   noteId: PropTypes.number,
-  fret: PropTypes.number
+  note: PropTypes.number
 };
 
 const mapStateToProps = state => ({
