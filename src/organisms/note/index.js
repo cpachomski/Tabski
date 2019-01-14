@@ -35,55 +35,50 @@ function areEqual(prevProps, nextProps) {
   );
 }
 
-const Note = memo(function Note({
-  activeNoteSelector,
-  sectionId,
-  chordId,
-  noteId,
-  fret,
-  dispatch
-}) {
-  const [state, setState] = useState({
-    isHovered: false
-  });
+const Note = memo(
+  ({ activeNoteSelector, sectionId, chordId, noteId, fret, dispatch }) => {
+    const [state, setState] = useState({
+      isHovered: false
+    });
 
-  return (
-    <Square
-      onClick={() =>
-        dispatch({
-          type: SET_ACTIVE_NOTE_SELECTOR,
-          sectionId,
-          chordId,
-          noteId
-        })
-      }
-      onMouseEnter={() =>
-        setState({
-          ...state,
-          isHovered: true
-        })
-      }
-      onMouseLeave={() => setState({ ...state, isHovered: false })}
-    >
-      <Line isHovered={state.isHovered} />
-      {fret && <Dot>{fret}</Dot>}
-      {activeNoteSelector &&
-        isActiveNoteSelector(
-          activeNoteSelector,
-          sectionId,
-          chordId,
-          noteId
-        ) && (
-          <NoteSelector
-            sectionId={sectionId}
-            chordId={chordId}
-            noteId={noteId}
-          />
-        )}
-    </Square>
-  );
-},
-areEqual);
+    return (
+      <Square
+        onMouseDown={() =>
+          dispatch({
+            type: SET_ACTIVE_NOTE_SELECTOR,
+            sectionId,
+            chordId,
+            noteId
+          })
+        }
+        onMouseEnter={() =>
+          setState({
+            ...state,
+            isHovered: true
+          })
+        }
+        onMouseLeave={() => setState({ ...state, isHovered: false })}
+      >
+        <Line isHovered={state.isHovered} />
+        {fret && <Dot>{fret}</Dot>}
+        {activeNoteSelector &&
+          isActiveNoteSelector(
+            activeNoteSelector,
+            sectionId,
+            chordId,
+            noteId
+          ) && (
+            <NoteSelector
+              sectionId={sectionId}
+              chordId={chordId}
+              noteId={noteId}
+            />
+          )}
+      </Square>
+    );
+  },
+  areEqual
+);
 
 Note.propTypes = {
   sectionId: PropTypes.number,

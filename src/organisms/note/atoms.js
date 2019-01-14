@@ -9,6 +9,13 @@ export const Square = styled.div`
     cursor: pointer;
   }
 
+  > ul {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -21,10 +28,11 @@ export const Line = styled.div`
   position: absolute;
   top: 50%;
   left: 0px;
-  height: ${props => (props.isHovered ? `6px` : `2px`)};
+  height: 2px;
   width: 100%;
   background-color: black;
-  transform: translateY(-50%);
+  transform: translateY(-50%)
+    ${props => (props.isHovered ? "scaleY(3)" : "scaleY(1)")};
 `;
 
 export const Dot = styled.div`
