@@ -36,7 +36,7 @@ class Chord extends Component {
   render() {
     const { tuningIsVisible } = this.state;
     const { sectionId, chordId, notes, tunings } = this.props;
-    console.log(`Tunings for section${sectionId}: ${JSON.stringify(tunings)}`);
+    // console.log(`Tunings for section${sectionId}: ${JSON.stringify(tunings)}`);
 
     return (
       <Row>

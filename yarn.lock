@@ -6878,6 +6878,7 @@ react-lifecycles-compat@^3.0.0:
 react-pie-menu@^0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/react-pie-menu/-/react-pie-menu-0.2.4.tgz#f483a0554487140495ff8a4ce1be31d90c0458d9"
+  integrity sha512-FdSArAKSVgNiMv023u45jmbp6GTRbpQuq+uUeK787WjqfbsQ6j8mSSEYc709ZN205dyuZyrlR5H9vcAI49i45A==
   dependencies:
     react-is "^16.5.2"
     styled-components-theme-connector "^0.1.3"

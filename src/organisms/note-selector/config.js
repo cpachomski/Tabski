@@ -1,4 +1,5 @@
 export const frettings = [
+  "x",
   1,
   2,
   3,
