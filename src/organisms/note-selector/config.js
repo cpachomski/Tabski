@@ -1,4 +1,4 @@
-export const frettings = [
+export const frets = [
   "x",
   1,
   2,

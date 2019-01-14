@@ -1,10 +1,37 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import PieMenu, { Slice } from "react-pie-menu";
 import { connect } from "react-redux";
-import { SET_ACTIVE_NOTE_SELECTOR } from "actions";
-import { Wrapper } from "./atoms";
-import { frettings } from "./config";
+import { SET_NOTE, SET_ACTIVE_NOTE_SELECTOR } from "actions";
+import { Wrapper, OptionsGrid, Heading, Selection } from "./atoms";
+import { frets } from "./config";
+
+function SingleFretSelections({
+  heading,
+  frets,
+  sectionId,
+  chordId,
+  noteId,
+  dispatch
+}) {
+  return (
+    <>
+      {heading && <Heading>{heading}</Heading>}
+      <OptionsGrid>
+        {frets.map((fret, i) => (
+          <Selection
+            onClick={() => {
+              dispatch({ type: SET_NOTE, sectionId, chordId, noteId, fret });
+              dispatch({ type: SET_ACTIVE_NOTE_SELECTOR });
+            }}
+            key={`s:${sectionId}-c:${chordId}-n:${noteId}-f:${fret}`}
+          >
+            {fret}
+          </Selection>
+        ))}
+      </OptionsGrid>
+    </>
+  );
+}
 
 function NoteSelector({ sectionId, chordId, noteId, dispatch }) {
   const selectorRef = React.createRef();
@@ -24,18 +51,14 @@ function NoteSelector({ sectionId, chordId, noteId, dispatch }) {
 
   return (
     <Wrapper ref={selectorRef}>
-      <PieMenu
-        radius="125px"
-        centerRadius="30px"
-        centerX={"50%"}
-        centerY={"50%"}
-      >
-        {frettings.map((fretting, i) => (
-          <Slice key={`s:${sectionId}-c:${chordId}-n:${noteId}-f:${fretting}`}>
-            {fretting}
-          </Slice>
-        ))}
-      </PieMenu>
+      <SingleFretSelections
+        heading="Single Notes"
+        frets={frets}
+        sectionId={sectionId}
+        chordId={chordId}
+        noteId={noteId}
+        dispatch={dispatch}
+      />
     </Wrapper>
   );
 }
