@@ -1,4 +1,4 @@
-export const frets = [
+export const notes = [
   "x",
   1,
   2,
