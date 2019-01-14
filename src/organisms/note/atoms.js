@@ -7,6 +7,10 @@ export const Square = styled.div`
 
   &:hover {
     cursor: pointer;
+
+    > span {
+      transform: translateY(-50%) scaleY(3);
+    }
   }
 
   > ul {
@@ -24,15 +28,14 @@ export const Square = styled.div`
   user-select: none;
 `;
 
-export const Line = styled.div`
+export const Line = styled.span`
   position: absolute;
   top: 50%;
   left: 0px;
   height: 2px;
   width: 100%;
   background-color: black;
-  transform: translateY(-50%)
-    ${props => (props.isHovered ? "scaleY(3)" : "scaleY(1)")};
+  transform: translateY(-50%) scaleY(1);
 `;
 
 export const Dot = styled.div`

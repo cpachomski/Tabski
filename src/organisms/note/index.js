@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { SET_ACTIVE_NOTE_SELECTOR } from "actions";
@@ -37,10 +37,6 @@ function areEqual(prevProps, nextProps) {
 
 const Note = memo(
   ({ activeNoteSelector, sectionId, chordId, noteId, fret, dispatch }) => {
-    const [state, setState] = useState({
-      isHovered: false
-    });
-
     return (
       <Square
         onMouseDown={() =>
@@ -51,15 +47,8 @@ const Note = memo(
             noteId
           })
         }
-        onMouseEnter={() =>
-          setState({
-            ...state,
-            isHovered: true
-          })
-        }
-        onMouseLeave={() => setState({ ...state, isHovered: false })}
       >
-        <Line isHovered={state.isHovered} />
+        <Line />
         {fret && <Dot>{fret}</Dot>}
         {activeNoteSelector &&
           isActiveNoteSelector(
