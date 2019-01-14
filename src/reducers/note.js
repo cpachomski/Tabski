@@ -29,7 +29,7 @@ export default {
   [SET_RECENT_NOTE]: (state, action) => {
     const { recentNotes } = state;
     const { note } = action;
-    const MAX_RECENT_NOTES = 10;
+    const MAX_RECENT_NOTES = 9;
 
     const dedup = [...recentNotes];
 
@@ -39,7 +39,7 @@ export default {
     }
 
     // remove last element if we are showing too many
-    if (recentNotes.length > MAX_RECENT_NOTES) {
+    if (recentNotes.length >= MAX_RECENT_NOTES) {
       dedup.pop();
     }
 

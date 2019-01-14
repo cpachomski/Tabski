@@ -26,7 +26,7 @@ export const OptionsGrid = styled.div`
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(${props => props.rows}, 1fr);
 `;
 
 export const Selection = styled.button`
